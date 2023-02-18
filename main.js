@@ -29,9 +29,10 @@ const flattenObject = (obj) => {
         
         } 
         else if( typeof value === 'string') {
-            text2Vec.encode(value).forEach((char, index) => {
-                flattened[key + ":" + index] = char
-            }) 
+            // text2Vec.encode(value).forEach((char, index) => {
+            //     flattened[key + ":" + index] = char
+            // }) 
+            flattened[value] = 1 
         }
         else {
             flattened[key] = value
@@ -78,7 +79,7 @@ function objectNormalizer(object) {
 
 function normalize(json,debug = false) {
     let normalized
-    if (Array.isArray(json)) normalized = arrayNormalizer(json)
+    if (Array.isArray(json)) normalized = arrayNormalizer(json, debug)
     else if (typeof json === 'object') normalized = objectNormalizer(json)
     else normalized = new Error('Invalid input')
     if(debug) console.log(normalized.map(value => value.length))
@@ -104,7 +105,7 @@ function encode(data) {
 function EncodeJson(json, debug = false) {
     let encoded
     if (Array.isArray(json)) {
-        let normalized = normalize(json)
+        let normalized = normalize(json, debug)
         if(debug) console.log(normalized)
         encoded = encode(normalized)
     }
