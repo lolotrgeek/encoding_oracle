@@ -81,8 +81,9 @@ function normalize(json,debug = false) {
     let normalized
     if (Array.isArray(json)) normalized = arrayNormalizer(json, debug)
     else if (typeof json === 'object') normalized = objectNormalizer(json)
+    else if(normalized.reduce((prev, curr) => prev.length ==! curr.length)) normalized = new Error('Normlization failed: Invalid lengths.')
     else normalized = new Error('Invalid input')
-    if(debug) console.log(normalized.map(value => value.length))
+    if(debug) console.log("normalized lengths", normalized.map(value => value.length))
     return normalized
 }
 
@@ -106,7 +107,7 @@ function EncodeJson(json, debug = false) {
     let encoded
     if (Array.isArray(json)) {
         let normalized = normalize(json, debug)
-        if(debug) console.log(normalized)
+        if(debug) console.log("normalized values", normalized)
         encoded = encode(normalized)
     }
     else if (typeof json === 'object') encoded = encode(Object.values(flattenObject(json)))
