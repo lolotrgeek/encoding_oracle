@@ -5,4 +5,5 @@ Auto encodes any JSON data into tensors.
 needs tests
 - large json
 - deep nested
+- long strings
 - undefined, null, etc
