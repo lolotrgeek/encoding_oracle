@@ -64,7 +64,7 @@ function formatArrayObjects(array) {
 
 function arrayNormalizer(array, debug = false) {
     let pre_normalized = array.map(flattenObject)
-    console.log("pre_normalized", pre_normalized)
+    if(debug) console.log("pre_normalized", pre_normalized)
     return formatArrayObjects(pre_normalized).map(value => {
         let flattened = flattenObject(value)
         if(debug) console.log("keys", Object.keys(flattened))
