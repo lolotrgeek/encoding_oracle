@@ -18,5 +18,5 @@ const textual = [
     { stock: 23, sold: 5, price: 121.30, category: 'electronics', id: 150 },
 ]
 
-const encodedTextual = EncodeJson(textual)
+const encodedTextual = EncodeJson(textual, true)
 console.log(encodedTextual.toString())
