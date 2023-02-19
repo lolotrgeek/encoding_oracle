@@ -1,0 +1,138 @@
+{
+    "name": "John Doe",
+    "age": 30,
+    "address": {
+        "street": "123 Main Street",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "12345",
+        "location": {
+            "latitude": 37.7749,
+            "longitude": -122.4194,
+            "country": {
+                "name": "United States",
+                "code": "US",
+                "states": [
+                    {
+                        "name": "California",
+                        "code": "CA",
+                        "cities": [
+                            {
+                                "name": "San Francisco",
+                                "population": 883305,
+                                "area": {
+                                    "unit": "sq mi",
+                                    "value": 46.89
+                                }
+                            },
+                            {
+                                "name": "Los Angeles",
+                                "population": 3977683,
+                                "area": {
+                                    "unit": "sq mi",
+                                    "value": 468.67
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "New York",
+                        "code": "NY",
+                        "cities": [
+                            {
+                                "name": "New York City",
+                                "population": 8336817,
+                                "area": {
+                                    "unit": "sq mi",
+                                    "value": 468.9
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "phone_numbers": [
+        {
+            "type": "home",
+            "number": "555-555-1234",
+            "country_code": {
+                "name": "United States",
+                "code": "US",
+                "area_codes": [
+                    {
+                        "code": "212",
+                        "location": "New York"
+                    },
+                    {
+                        "code": "415",
+                        "location": "San Francisco"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "work",
+            "number": "555-555-5678",
+            "country_code": {
+                "name": "United States",
+                "code": "US",
+                "area_codes": [
+                    {
+                        "code": "212",
+                        "location": "New York"
+                    },
+                    {
+                        "code": "310",
+                        "location": "Los Angeles"
+                    }
+                ]
+            }
+        }
+    ],
+    "employment_history": [
+        {
+            "company": "Acme Inc.",
+            "position": "Software Engineer",
+            "dates": {
+                "start_date": "2015-01-01",
+                "end_date": "2018-12-31"
+            },
+            "projects": [
+                {
+                    "name": "Project X",
+                    "description": "Developed a new feature for the company's flagship product",
+                    "team": [
+                        {
+                            "name": "Jane Smith",
+                            "title": "Project Manager",
+                            "email": "jane.smith@acmeinc.com"
+                        },
+                        {
+                            "name": "Bob Johnson",
+                            "title": "Senior Engineer",
+                            "email": "bob.johnson@acmeinc.com"
+                        }
+                    ]
+                },
+                {
+                    "name": "Project Y",
+                    "description": "Implemented a new data analytics platform",
+                    "team": [
+                        {
+                            "name": "Alice Lee",
+                            "title": "Project Manager",
+                            "email": "alice.lee@acmeinc.com"
+                        },
+                        {
+                            "name": "David Brown",
+                            "title": "Data Scientist",
+                            "email": "david.brown@acmeinc.com"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
