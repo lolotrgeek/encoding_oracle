@@ -5,17 +5,17 @@ const {normalize, encode, flattenObject } = require('./helpers')
  * @param {*} json 
  * @source https://wagenaartje.github.io/neataptic/docs/tutorials/normalization/
  * @todo needs optimization, very inefficient
- * @returns 
+ * @returns `Tensor` can be converted to array with `.array()` or `.arraySync()`
  */
 function EncodeJson(json, debug = false) {
     let encoded
     if (Array.isArray(json)) {
         let normalized = normalize(json, debug)
         if(debug) console.log("normalized values", normalized)
-        encoded = encode(normalized).arraySync()
+        encoded = encode(normalized)
     }
     else if (typeof json === 'object') encoded = encode(Object.values(flattenObject(json)))
-    else encoded = new Error('Invalid input')
+    else encoded = {error: new Error('Invalid input'), array: () => [new Error('Invalid input')], arraySync: () => [new Error('Invalid input')]}
     return encoded
 }
 
