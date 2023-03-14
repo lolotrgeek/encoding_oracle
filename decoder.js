@@ -21,34 +21,49 @@ function unflattenObject(obj) {
     return nestedObj;
 }
 
-function reverse_formatArrayObjects(array) {
-    const keys = Object.keys(array[0]);
-    const reversedKeys = keys.reverse();
-    return array.map(obj => {
-        const reversedObj = {};
-        for (let key of reversedKeys) {
-            reversedObj[key] = obj[key];
+function unformatArrayObjects(formattedArray) {
+    try {
+      // Find the set of all keys in the array
+      const allKeys = new Set()
+      formattedArray.forEach(obj => {
+        if (obj && typeof obj === 'object') Object.keys(obj).forEach(key => {
+          allKeys.add(key)
+        })
+      })
+      // Create a new array of objects with the same keys
+      const unformattedArray = formattedArray.map(obj => {
+        const unformattedObj = {}
+        if (obj && typeof obj === 'object') {
+          allKeys.forEach(key => {
+            unformattedObj[key] = obj[key]
+          })
         }
-        return reversedObj;
-    });
+        return unformattedObj
+      })
+  
+      return unformattedArray
+    } catch (error) {
+      return error
+    }
+  }
+  
+
+
+function arrayDenormalizer(array, debug=false) {
+    let unformatted = unformatArrayObjects(array)
+    if (debug) console.log("unformatted", unformatted)
+    return unformatted.map(value => Object.values(unflattenObject(value)))    
 }
 
 
-function reverse_arrayNormalizer(array) {
-
-}
-
-
-function undo_objectNormalizer(values) {
+function objectDenormalizer(values) {
     return unflattenObject(values)
 }
 
 function denormalize(json) {
-    if (Array.isArray(json)) {
-        return reverse_arrayNormalizer(reverse_formatArrayObjects(json));
-    } else {
-        return reverse_flattenObject(reverse_objectNormalizer(json));
-    }
+    if (Array.isArray(json)) return arrayDenormalizer(json)
+    else if (typeof json === 'object') return objectDenormalizer(json)
+    else return new Error('Invalid input')
 }
 
 function decode(normalized, mean, std) {
@@ -57,4 +72,4 @@ function decode(normalized, mean, std) {
 }
 
 
-module.exports = { reverse_normalize, reverse_arrayNormalizer,reverse_formatArrayObjects,  reverse_objectNormalizer, reverse_flattenObject, reverse_len, decode}
+module.exports = { reverse_len, decode, denormalize, unflattenObject, unformatArrayObjects, arrayDenormalizer, objectDenormalizer}

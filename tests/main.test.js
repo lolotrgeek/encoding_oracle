@@ -21,7 +21,7 @@ describe('EncodeJson', () => {
     const data = 'not an object or array'
     const expected = new Error('Invalid input')
     const result = EncodeJson(data)
-    expect(result).toEqual(expected)
+    expect(result.error).toEqual(expected)
   })
 
   it('normalizes and encodes arrays', () => {
