@@ -33,9 +33,11 @@ function formatArrayObjects(array) {
         // Create a new array of objects with the same keys
         const formattedArray = array.map(obj => {
             const formattedObj = {}
-            allKeys.forEach(key => {
-                formattedObj[key] = obj[key] || 0
-            })
+            if (obj && typeof obj === 'object') {
+                allKeys.forEach(key => {
+                    formattedObj[key] = obj[key] || 0
+                })
+            }
             return formattedObj
         })
 
