@@ -76,7 +76,7 @@ function normalize(json, debug = false) {
         if (debug) console.log("normalized lengths", normalized.map(value => value.length))
         return normalized
     } catch (error) {
-        return error
+        throw error
     }
 
 }
