@@ -26,7 +26,7 @@ function formatArrayObjects(array) {
         // Find the set of all keys in the array
         const allKeys = new Set()
         array.forEach(obj => {
-            if (typeof obj === 'object') Object.keys(obj).forEach(key => {
+            if (obj && typeof obj === 'object') Object.keys(obj).forEach(key => {
                 allKeys.add(key)
             })
         })
